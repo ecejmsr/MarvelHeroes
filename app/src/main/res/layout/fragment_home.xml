@@ -31,6 +31,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             layout="@layout/fragment_squad_info"/>
 
+        <include
+            android:id="@+id/include_popularListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/include_squadInfo"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            layout="@layout/fragment_popular_heroes_list"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

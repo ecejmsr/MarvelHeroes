@@ -14,4 +14,8 @@
 
     <!-- Fragment Titles-->
     <string name="marvel_heroes_fragment_landing">Marvel Heroes</string>
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_squad">Squad</string>
+    <string name="bottom_nav_store">Store</string>
+    <string name="bottom_nav_heroes">Heroes</string>
 </resources>

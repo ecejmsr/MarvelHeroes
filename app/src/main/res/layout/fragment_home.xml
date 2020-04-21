@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#000000">
+    android:background="#284544">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CL_homeScreen"
@@ -18,8 +18,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             layout="@layout/fragment_user_info"/>
-
-
 
         <include
             android:id="@+id/include_squadInfo"

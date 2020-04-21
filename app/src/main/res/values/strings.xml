@@ -8,4 +8,10 @@
     <string name="squad_captain_image_info">Squad captain image info</string>
     <string name="squad_member_1_image_holder">Squad Member 1 image holder</string>
     <string name="squad_member_2_image_holder">Squad member 2 image holder</string>
+    <string name="nav_controller_open">Open</string>
+    <string name="nav_controller_close">Close</string>
+    <string name="drawer_user_image">Drawer user image</string>
+
+    <!-- Fragment Titles-->
+    <string name="marvel_heroes_fragment_landing">Marvel Heroes</string>
 </resources>

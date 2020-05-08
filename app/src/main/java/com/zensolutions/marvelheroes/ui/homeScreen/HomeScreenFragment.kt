@@ -1,24 +1,32 @@
 package com.zensolutions.marvelheroes.ui.homeScreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.Observer
 import com.zensolutions.marvelheroes.R
+import com.zensolutions.marvelheroes.data.network.MarvelHeroRepository
+import com.zensolutions.marvelheroes.util.BaseFragment
 
-class HomeScreenFragment : Fragment() {
+class HomeScreenFragment : BaseFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override val layoutResourceID: Int
+        get() = R.layout.fragment_home
+
+    private val viewModel: HomeScreenViewModel by lazy {
+        createViewModel {
+            HomeScreenViewModel(MarvelHeroRepository.getMarvelHeroApi())
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val tempTextName = view.findViewById<TextView>(R.id.tempTextName)
 
+        viewModel.characterDataWrapperLiveData?.observe(viewLifecycleOwner, Observer {
+            tempTextName.text = it?.data?.results?.get(0)?.name
+        })
+
+        viewModel.fetchCharacter()
+    }
 }

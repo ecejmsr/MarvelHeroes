@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes
+package com.zensolutions.marvelheroes.ui.main
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.zensolutions.marvelheroes.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawer: DrawerLayout
@@ -27,7 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         drawer = findViewById(R.id.DL_mainMarvelHero)
 
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_app_bar_open_drawer_description, R.string.nav_controller_close)
+        toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+            R.string.nav_app_bar_open_drawer_description,
+            R.string.nav_controller_close
+        )
         drawer.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)

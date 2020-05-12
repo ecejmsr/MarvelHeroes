@@ -1,7 +1,6 @@
-package com.zensolutions.marvelheroes.data.model
+package com.zensolutions.marvelheroes.data.model.heroModel
 
 import android.os.Parcelable
-import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

@@ -1,5 +1,6 @@
-package com.zensolutions.marvelheroes.data.network
+package com.zensolutions.marvelheroes.data.network.retrofit
 
+import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
 import retrofit2.Response
 import java.io.IOException
 import java.lang.Exception
@@ -32,12 +33,18 @@ object RetrofitCallHandler {
         } catch (exception: Exception) {
             when (exception) {
                 is IOException -> {
-                    logExceptionMessage("No Internet detected", "NETWORK IS NOT CONNECTED!")
+                    logExceptionMessage(
+                        "No Internet detected",
+                        "NETWORK IS NOT CONNECTED!"
+                    )
                     ServiceResult.Error(exception)
                 }
 
                 else -> {
-                    logExceptionMessage("1337", exception.localizedMessage ?: "")
+                    logExceptionMessage(
+                        "1337",
+                        exception.localizedMessage ?: ""
+                    )
                     ServiceResult.Error(exception)
                 }
             }

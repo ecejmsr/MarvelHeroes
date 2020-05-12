@@ -1,6 +1,6 @@
-package com.zensolutions.marvelheroes.data.network
+package com.zensolutions.marvelheroes.data.network.api
 
-import com.zensolutions.marvelheroes.data.model.CharacterDataWrapper
+import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

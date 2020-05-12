@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.zensolutions.marvelheroes.R
-import com.zensolutions.marvelheroes.data.network.MarvelHeroRepository
+import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.util.BaseFragment
 
 class HomeScreenFragment : BaseFragment() {
@@ -15,7 +15,7 @@ class HomeScreenFragment : BaseFragment() {
 
     private val viewModel: HomeScreenViewModel by lazy {
         createViewModel {
-            HomeScreenViewModel(MarvelHeroRepository.getMarvelHeroApi())
+            HomeScreenViewModel(MarvelHeroFetchRepository.getMarvelHeroApi())
         }
     }
 

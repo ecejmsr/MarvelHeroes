@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.data.network
+package com.zensolutions.marvelheroes.data.model.networkModel
 
 import java.lang.Exception
 

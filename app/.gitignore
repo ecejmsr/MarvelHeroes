@@ -1,2 +1,2 @@
 /build
-/src/main/java/com/zensolutions/marvelheroes/data/network/retrofit
+/src/main/java/com/zensolutions/marvelheroes/data/network/retrofit/MarvelTSProvider.kt

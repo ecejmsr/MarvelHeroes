@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.zensolutions.marvelheroes.MarvelHeroesApplication
 import com.zensolutions.marvelheroes.R
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        inject()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         drawer = findViewById(R.id.DL_mainMarvelHero)
 
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+        toggle = ActionBarDrawerToggle(
+            this, drawer, toolbar,
             R.string.nav_app_bar_open_drawer_description,
             R.string.nav_controller_close
         )
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (toggle.onOptionsItemSelected(item)){
+        return if (toggle.onOptionsItemSelected(item)) {
             true
         } else {
             super.onOptionsItemSelected(item)
@@ -69,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    fun inject() {
+        (application as MarvelHeroesApplication).mainComponent().inject(this)
     }
 
 }

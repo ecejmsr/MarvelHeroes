@@ -27,6 +27,7 @@ class HomeScreenFragment : BaseFragment() {
             tempTextName.text = it?.data?.results?.get(0)?.name
         })
 
-        viewModel.fetchCharacter()
+        viewModel.fetchCharacter("Hulk")
+        viewModel.fetchCharacter("Thor")
     }
 }

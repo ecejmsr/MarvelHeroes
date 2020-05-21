@@ -23,7 +23,7 @@ interface MarvelHeroesAppComponent {
         fun application(application: Application): Builder
 
         fun build(): MarvelHeroesAppComponent
-    }gi
+    }
 
     fun inject(baseActivity: AppCompatActivity)
 

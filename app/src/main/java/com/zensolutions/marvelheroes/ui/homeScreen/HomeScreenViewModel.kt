@@ -17,10 +17,10 @@ internal class HomeScreenViewModel(private val marvelHeroRepository: MarvelHeroF
     val characterDataWrapperLiveData: LiveData<CharacterDataWrapper?>? =
         characterDataWrapperMutableLiveData
 
-    fun fetchCharacter() {
+    fun fetchCharacter(characterName: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-               handleHeroResponse(marvelHeroRepository.getHeroInformation())
+               handleHeroResponse(marvelHeroRepository.getHeroInformation(characterName))
             }
         }
     }

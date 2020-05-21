@@ -6,7 +6,7 @@ import com.zensolutions.marvelheroes.data.network.impl.MarvelHeroFetchImpl
 
 internal interface MarvelHeroFetchRepository {
 
-    suspend fun getHeroInformation(): ServiceResult<CharacterDataWrapper>
+    suspend fun getHeroInformation(characterName: String): ServiceResult<CharacterDataWrapper>
 
     companion object {
 

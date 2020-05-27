@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.injection.main
+package com.zensolutions.marvelheroes.di.main
 
 import javax.inject.Scope
 

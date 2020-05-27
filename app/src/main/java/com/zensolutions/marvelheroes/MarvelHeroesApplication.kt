@@ -1,9 +1,9 @@
 package com.zensolutions.marvelheroes
 
 import android.app.Application
-import com.zensolutions.marvelheroes.injection.DaggerMarvelHeroesAppComponent
-import com.zensolutions.marvelheroes.injection.MarvelHeroesAppComponent
-import com.zensolutions.marvelheroes.injection.main.MainComponent
+import com.zensolutions.marvelheroes.di.DaggerMarvelHeroesAppComponent
+import com.zensolutions.marvelheroes.di.MarvelHeroesAppComponent
+import com.zensolutions.marvelheroes.di.main.MainComponent
 
 class MarvelHeroesApplication : Application() {
 

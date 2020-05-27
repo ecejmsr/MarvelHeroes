@@ -5,13 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
-import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
-import kotlinx.coroutines.Dispatchers
+import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
+import com.zensolutions.marvelheroes.di.main.MainScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-internal class HomeScreenViewModel(private val marvelHeroRepository: MarvelHeroFetchRepository) :
+
+@MainScope
+class HomeScreenViewModel @Inject constructor(
+    private val marvelHeroRepository: MarvelHeroFetchRepository,
+    private val ioDisptacher: CoroutineDispatcher
+) :
     ViewModel() {
     private val characterDataWrapperMutableLiveData = MutableLiveData<CharacterDataWrapper?>()
     val characterDataWrapperLiveData: LiveData<CharacterDataWrapper?>? =
@@ -19,14 +26,14 @@ internal class HomeScreenViewModel(private val marvelHeroRepository: MarvelHeroF
 
     fun fetchCharacter(characterName: String) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-               handleHeroResponse(marvelHeroRepository.getHeroInformation(characterName))
+            withContext(ioDisptacher) {
+                handleHeroResponse(marvelHeroRepository.getHeroInformation(characterName))
             }
         }
     }
 
-    private fun handleHeroResponse(response: ServiceResult<CharacterDataWrapper>){
-        when(response){
+    private fun handleHeroResponse(response: ServiceResult<CharacterDataWrapper>) {
+        when (response) {
             is ServiceResult.Success -> characterDataWrapperMutableLiveData.postValue(response.data)
 
             is ServiceResult.Error -> response.exception

@@ -7,13 +7,19 @@ import com.zensolutions.marvelheroes.data.network.api.MarvelApi
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.data.network.retrofit.MarvelTSProvider
 import com.zensolutions.marvelheroes.data.network.retrofit.RetrofitCallHandler
+import com.zensolutions.marvelheroes.di.main.MainScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MarvelHeroFetchImpl(
-    private val service: MarvelApi = getMarvelHeroFetchApi(),
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+
+@MainScope
+class MarvelHeroFetchImpl
+@Inject
+constructor(
+    private val service: MarvelApi,
+    private val ioDispatcher: CoroutineDispatcher
 ) : MarvelHeroFetchRepository {
     override suspend fun getHeroInformation(characterName: String): ServiceResult<CharacterDataWrapper> {
 

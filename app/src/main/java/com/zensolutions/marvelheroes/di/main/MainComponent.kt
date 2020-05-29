@@ -1,10 +1,8 @@
 package com.zensolutions.marvelheroes.di.main
 
-import com.zensolutions.marvelheroes.ui.homeScreen.HomeScreenFragment
+import com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes.di.PopularHeroesComponent
 import com.zensolutions.marvelheroes.ui.homeScreen.di.HomeScreenComponent
-import com.zensolutions.marvelheroes.ui.homeScreen.di.HomeScreenViewModelModule
 import com.zensolutions.marvelheroes.ui.main.MainActivity
-import dagger.Component
 import dagger.Module
 import dagger.Subcomponent
 
@@ -30,7 +28,8 @@ interface MainComponent {
 
 @Module(
     subcomponents = [
-    HomeScreenComponent::class
+    HomeScreenComponent::class,
+    PopularHeroesComponent::class
     ]
 )
 

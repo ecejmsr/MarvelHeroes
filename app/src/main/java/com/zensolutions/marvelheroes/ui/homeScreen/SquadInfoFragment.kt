@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.ui
+package com.zensolutions.marvelheroes.ui.homeScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 import com.zensolutions.marvelheroes.R
 
-class PopularHeroesListFragment : Fragment() {
+class SquadInfoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class PopularHeroesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_popular_heroes_list, container, false)
+        return inflater.inflate(R.layout.fragment_squad_info, container, false)
     }
 
 }

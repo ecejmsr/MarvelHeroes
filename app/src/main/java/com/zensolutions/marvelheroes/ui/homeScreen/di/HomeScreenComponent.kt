@@ -1,6 +1,5 @@
 package com.zensolutions.marvelheroes.ui.homeScreen.di
 
-import com.zensolutions.marvelheroes.di.main.MainScope
 import com.zensolutions.marvelheroes.ui.homeScreen.HomeScreenFragment
 import dagger.Subcomponent
 
@@ -8,7 +7,7 @@ import dagger.Subcomponent
 interface HomeScreenComponent {
 
     @Subcomponent.Factory
-    interface Factory{
+    interface Factory {
 
         fun create(): HomeScreenComponent
     }

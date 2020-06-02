@@ -24,6 +24,8 @@ interface MainComponent {
     fun inject(mainActivity: MainActivity)
 
     fun homeScreenComponent(): HomeScreenComponent
+
+    fun popularHeroesComponent(): PopularHeroesComponent
 }
 
 @Module(

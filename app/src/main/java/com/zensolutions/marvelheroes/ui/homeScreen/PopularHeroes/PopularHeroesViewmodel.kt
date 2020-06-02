@@ -3,10 +3,15 @@ package com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
+import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.util.Constants
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PopularHeroesViewmodel @Inject constructor(
@@ -15,14 +20,43 @@ class PopularHeroesViewmodel @Inject constructor(
 ) :
     ViewModel() {
 
-    private val _popularHeroesList: MutableLiveData<List<CharacterDataWrapper?>> = MutableLiveData()
-    val popularHeroesList: LiveData<List<CharacterDataWrapper?>> = _popularHeroesList
+    private val _popularHeroesList: MutableLiveData<ArrayList<CharacterDataWrapper?>> =
+        MutableLiveData()
+    val popularHeroesList: LiveData<ArrayList<CharacterDataWrapper?>> = _popularHeroesList
+
 
     private val popularHeroList = Constants.POPULARHEROES
 
+
     fun populatePopularHeroList() {
-        //popular hero list fetch and populate list
-        //after successful completion start roomDB development
-        //dont forget to do DI
+        val tempList = arrayListOf<CharacterDataWrapper?>()
+        viewModelScope.launch {
+            withContext(ioDispatcher) {
+                withContext(Dispatchers.Default) {
+                    for (hero in popularHeroList) {
+                        handleHeroResponse(
+                            marvelHeroRepository.getHeroInformation(hero),
+                            tempList
+                        )
+                    }
+                }
+                _popularHeroesList.postValue(tempList)
+            }
+        }
+    }
+
+    private fun handleHeroResponse(
+        response: ServiceResult<CharacterDataWrapper>,
+        responseHeroArray: ArrayList<CharacterDataWrapper?>
+    ) {
+        when (response) {
+            is ServiceResult.Success -> {
+                if (!response.data.data?.results.isNullOrEmpty()) {
+                    responseHeroArray.add(response.data)
+                }
+            }
+
+            is ServiceResult.Error -> response.exception
+        }
     }
 }

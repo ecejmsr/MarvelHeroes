@@ -31,8 +31,5 @@ class HomeScreenFragment : BaseFragment() {
         viewModel.characterDataWrapperLiveData?.observe(viewLifecycleOwner, Observer {
             tempTextName.text = it?.data?.results?.get(0)?.name
         })
-
-        viewModel.fetchCharacter("Hulk")
-        viewModel.fetchCharacter("Thor")
     }
 }

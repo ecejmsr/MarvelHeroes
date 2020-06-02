@@ -15,20 +15,20 @@ class Constants {
             "Spider-Man",
             "Black Panther",
             "Vision",
-            "Scarlet With",
+            "Scarlet Witch",
             "Falcon",
-            "Winter Soilder",
+            "Winter Soldier",
             "Loki",
             "Heimdall",
             "Eitri",
             "Wong",
             "Mantis",
             "Nebula",
-            "Drax the Destroyer",
+            "Drax",
             "Gamora",
             "Groot",
             "Rocket",
-            "Star-Lord"
+            "Peter Quill"
         )
     }
 }

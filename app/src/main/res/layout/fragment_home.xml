@@ -34,7 +34,7 @@
             android:id="@+id/include_popularListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes.PopularHeroesListFragment"
+            android:name="com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes.PopularHeroesListFragment"
             app:layout_constraintTop_toBottomOf="@id/include_squadInfo"
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"

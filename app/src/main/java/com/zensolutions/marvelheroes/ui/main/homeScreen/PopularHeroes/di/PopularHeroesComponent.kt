@@ -1,6 +1,6 @@
-package com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes.di
+package com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes.di
 
-import com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes.PopularHeroesListFragment
+import com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes.PopularHeroesListFragment
 import dagger.Subcomponent
 
 @Subcomponent

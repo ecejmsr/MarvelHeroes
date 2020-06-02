@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.ui.homeScreen
+package com.zensolutions.marvelheroes.ui.main.homeScreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

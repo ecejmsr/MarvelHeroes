@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes
+package com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes
 
 import android.content.Context
 import android.os.Bundle

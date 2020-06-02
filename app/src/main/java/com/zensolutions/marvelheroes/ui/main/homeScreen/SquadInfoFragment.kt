@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.ui.homeScreen
+package com.zensolutions.marvelheroes.ui.main.homeScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

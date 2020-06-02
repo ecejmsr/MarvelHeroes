@@ -1,12 +1,11 @@
-package com.zensolutions.marvelheroes.ui.homeScreen.di
+package com.zensolutions.marvelheroes.ui.main.homeScreen.di
 
 import androidx.lifecycle.ViewModel
 import com.zensolutions.marvelheroes.di.ViewModelKey
-import com.zensolutions.marvelheroes.ui.homeScreen.HomeScreenViewModel
+import com.zensolutions.marvelheroes.ui.main.homeScreen.HomeScreenViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import kotlinx.coroutines.CoroutineDispatcher
 
 //Define viewmodels for Home screen here
 

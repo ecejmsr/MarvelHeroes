@@ -1,7 +1,7 @@
 package com.zensolutions.marvelheroes.di.main
 
-import com.zensolutions.marvelheroes.ui.homeScreen.PopularHeroes.di.PopularHeroesComponent
-import com.zensolutions.marvelheroes.ui.homeScreen.di.HomeScreenComponent
+import com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes.di.PopularHeroesComponent
+import com.zensolutions.marvelheroes.ui.main.homeScreen.di.HomeScreenComponent
 import com.zensolutions.marvelheroes.ui.main.MainActivity
 import dagger.Module
 import dagger.Subcomponent

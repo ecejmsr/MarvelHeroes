@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.ui.homeScreen
+package com.zensolutions.marvelheroes.ui.main.homeScreen
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.zensolutions.marvelheroes.MarvelHeroesApplication
 import com.zensolutions.marvelheroes.R
-import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.util.BaseFragment
 import javax.inject.Inject
 

@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class SeriesSummary(val resourceURI: String?, val name: String?): Parcelable
+data class SeriesSummary(val resourceURI: String?, val name: String?) : Parcelable

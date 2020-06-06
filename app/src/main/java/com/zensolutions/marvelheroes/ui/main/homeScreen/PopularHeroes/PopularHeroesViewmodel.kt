@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.zensolutions.marvelheroes.data.model.heroModel.Character
 import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
 import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
+import com.zensolutions.marvelheroes.data.persistence.PopularHeroesDao
 import com.zensolutions.marvelheroes.util.Constants
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +17,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PopularHeroesViewmodel @Inject constructor(
+    private val popularHeroesDao: PopularHeroesDao,
     private val marvelHeroRepository: MarvelHeroFetchRepository,
     private val ioDispatcher: CoroutineDispatcher
 ) :
@@ -30,6 +33,7 @@ class PopularHeroesViewmodel @Inject constructor(
 
     fun populatePopularHeroList() {
         val tempList = arrayListOf<CharacterDataWrapper?>()
+        var tempCounter = 0
         viewModelScope.launch {
             withContext(ioDispatcher) {
                 withContext(Dispatchers.Default) {
@@ -38,6 +42,11 @@ class PopularHeroesViewmodel @Inject constructor(
                             marvelHeroRepository.getHeroInformation(hero),
                             tempList
                         )
+
+                        if(tempCounter == 0 && tempList.isNotEmpty()){
+                            tempList[0]?.data?.results?.get(0)?.let { insertCharacterToDatabase(it) }
+                            tempCounter++
+                        }
                     }
                 }
                 _popularHeroesList.postValue(tempList)
@@ -58,5 +67,9 @@ class PopularHeroesViewmodel @Inject constructor(
 
             is ServiceResult.Error -> response.exception
         }
+    }
+
+    private suspend fun insertCharacterToDatabase(characterResponse: Character){
+        popularHeroesDao.insert(characterResponse)
     }
 }

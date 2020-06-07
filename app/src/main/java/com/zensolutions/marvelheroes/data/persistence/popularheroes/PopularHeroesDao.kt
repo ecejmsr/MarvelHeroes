@@ -1,4 +1,4 @@
-package com.zensolutions.marvelheroes.data.persistence
+package com.zensolutions.marvelheroes.data.persistence.popularheroes
 
 import androidx.room.*
 import com.zensolutions.marvelheroes.data.model.heroModel.Character
@@ -8,7 +8,7 @@ interface PopularHeroesDao {
     @Insert
     suspend fun insert(character: Character)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(character: Character)
 
     @Query("SELECT * FROM POPULARHEROES")
@@ -21,7 +21,7 @@ interface PopularHeroesDao {
     fun loadAllByIds(characterIds: IntArray): List<Character>
 
     @Query("SELECT * FROM POPULARHEROES WHERE name = :name LIMIT 1")
-    fun findByName(name: String): Character
+    fun findByName(name: String): Character?
 
     @Query("SELECT * FROM POPULARHEROES WHERE name LIKE :name")
     fun findCharactersByName(name: String): List<Character>

@@ -8,7 +8,7 @@ import com.zensolutions.marvelheroes.data.model.heroModel.Character
 import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
 import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
-import com.zensolutions.marvelheroes.data.persistence.PopularHeroesDao
+import com.zensolutions.marvelheroes.data.persistence.popularheroes.PopularHeroesRepository
 import com.zensolutions.marvelheroes.util.Constants
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -17,59 +17,67 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PopularHeroesViewmodel @Inject constructor(
-    private val popularHeroesDao: PopularHeroesDao,
+    private val popularHeroesRepository: PopularHeroesRepository,
     private val marvelHeroRepository: MarvelHeroFetchRepository,
     private val ioDispatcher: CoroutineDispatcher
 ) :
     ViewModel() {
 
-    private val _popularHeroesList: MutableLiveData<ArrayList<CharacterDataWrapper?>> =
+    private val _popularHeroesList: MutableLiveData<ArrayList<Character?>> =
         MutableLiveData()
-    val popularHeroesList: LiveData<ArrayList<CharacterDataWrapper?>> = _popularHeroesList
-
+    val popularHeroesList: LiveData<ArrayList<Character?>> = _popularHeroesList
 
     private val popularHeroList = Constants.POPULARHEROES
 
-
     fun populatePopularHeroList() {
-        val tempList = arrayListOf<CharacterDataWrapper?>()
-        var tempCounter = 0
+        val popularHeroListResponse = arrayListOf<Character?>()
+
         viewModelScope.launch {
             withContext(ioDispatcher) {
                 withContext(Dispatchers.Default) {
                     for (hero in popularHeroList) {
-                        handleHeroResponse(
-                            marvelHeroRepository.getHeroInformation(hero),
-                            tempList
-                        )
+                        when {
+                            popularHeroesRepository.getPopularHero(hero) != null -> {
+                                popularHeroListResponse.add(
+                                    popularHeroesRepository.getPopularHero(
+                                        hero
+                                    )
+                                )
+                            }
 
-                        if(tempCounter == 0 && tempList.isNotEmpty()){
-                            tempList[0]?.data?.results?.get(0)?.let { insertCharacterToDatabase(it) }
-                            tempCounter++
+                            else -> {
+                                handleHeroResponse(
+                                    marvelHeroRepository.getHeroInformation(hero),
+                                    popularHeroListResponse
+                                )?.let {
+                                    popularHeroesRepository.insertPopularHero(
+                                        it
+                                    )
+                                }
+                            }
                         }
                     }
                 }
-                _popularHeroesList.postValue(tempList)
+                _popularHeroesList.postValue(popularHeroListResponse)
             }
         }
     }
 
     private fun handleHeroResponse(
         response: ServiceResult<CharacterDataWrapper>,
-        responseHeroArray: ArrayList<CharacterDataWrapper?>
-    ) {
+        responseHeroArray: ArrayList<Character?>
+    ): Character? {
         when (response) {
             is ServiceResult.Success -> {
                 if (!response.data.data?.results.isNullOrEmpty()) {
-                    responseHeroArray.add(response.data)
+                    responseHeroArray.add(response.data.data?.results?.get(0))
+                    return response.data.data?.results?.get(0)
                 }
             }
 
             is ServiceResult.Error -> response.exception
         }
+        return null
     }
 
-    private suspend fun insertCharacterToDatabase(characterResponse: Character){
-        popularHeroesDao.insert(characterResponse)
-    }
 }

@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.zensolutions.marvelheroes.data.model.heroModel.Character
+import com.zensolutions.marvelheroes.data.persistence.popularheroes.PopularHeroesDao
 
 @Database(entities = [Character::class], version = 1)
 @TypeConverters(Converters::class)

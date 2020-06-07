@@ -3,11 +3,11 @@ package com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
+import com.zensolutions.marvelheroes.data.model.heroModel.Character
 
 internal class PopularHeroesAdapter() : RecyclerView.Adapter<PopularHeroesViewHolder>() {
 
-    private var popularHeroesList: List<CharacterDataWrapper?>? = listOf()
+    private var popularHeroesList: List<Character?>? = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularHeroesViewHolder {
         return PopularHeroesViewHolder(
@@ -26,7 +26,7 @@ internal class PopularHeroesAdapter() : RecyclerView.Adapter<PopularHeroesViewHo
         holder.bind(popularHeroesList?.get(position))
     }
 
-    fun setData(newPopularHeroesList: List<CharacterDataWrapper?>?){
+    fun setData(newPopularHeroesList: List<Character?>?){
         this.popularHeroesList = newPopularHeroesList
         notifyDataSetChanged()
     }

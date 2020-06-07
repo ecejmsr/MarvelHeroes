@@ -6,7 +6,8 @@ import com.zensolutions.marvelheroes.data.network.MarvelRetrofitService.getMarve
 import com.zensolutions.marvelheroes.data.network.api.MarvelApi
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.data.persistence.AppDatabase
-import com.zensolutions.marvelheroes.data.persistence.PopularHeroesDao
+import com.zensolutions.marvelheroes.data.persistence.popularheroes.PopularHeroesDao
+import com.zensolutions.marvelheroes.data.persistence.popularheroes.PopularHeroesRepository
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -34,8 +35,8 @@ internal object MainModule {
     @JvmStatic
     @MainScope
     @Provides
-    fun providePopularHeroesDao(db: AppDatabase): PopularHeroesDao {
-        return db.popularHeroesDao()
+    fun providePopularHeroesDao(db: AppDatabase): PopularHeroesRepository {
+        return PopularHeroesRepository.getPopularHeroesRepository(db.popularHeroesDao())
     }
 
     @JvmStatic

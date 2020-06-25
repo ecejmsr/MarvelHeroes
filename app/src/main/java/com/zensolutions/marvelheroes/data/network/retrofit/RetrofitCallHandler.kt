@@ -28,7 +28,7 @@ object RetrofitCallHandler {
                 )
 
                 //TODO JOSE we need to make a decent exception message here
-                return ServiceResult.Error(Exception())
+                return ServiceResult.Error(Exception("${serviceCall.code()}: call successful but error in response"))
             }
         } catch (exception: Exception) {
             when (exception) {

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.main.heroOverview.HeroOverviewFragment">
+
+
+    <TextView
+        android:id="@+id/TV_heroOverviewHeroName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Hero Name Overview"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/IV_heroOverviewHeroImage"
+        android:layout_width="250px"
+        android:layout_height="250px"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toBottomOf="@+id/TV_heroOverviewHeroName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/BT_heroOverviewUnlockHero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/IV_heroOverviewHeroImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="@string/heroOverviewUnlockButtonText"/>
+
+    <TextView
+        android:id="@+id/TV_heroOverviewHeroDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/BT_heroOverviewUnlockHero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="Temporary text for hero and stuff"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV_heroOverviewHeroComicList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/TV_heroOverviewHeroDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

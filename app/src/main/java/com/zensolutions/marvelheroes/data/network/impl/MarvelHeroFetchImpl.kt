@@ -2,14 +2,12 @@ package com.zensolutions.marvelheroes.data.network.impl
 
 import com.zensolutions.marvelheroes.data.model.heroModel.CharacterDataWrapper
 import com.zensolutions.marvelheroes.data.model.networkModel.ServiceResult
-import com.zensolutions.marvelheroes.data.network.MarvelRetrofitService.getMarvelHeroFetchApi
 import com.zensolutions.marvelheroes.data.network.api.MarvelApi
 import com.zensolutions.marvelheroes.data.network.repo.MarvelHeroFetchRepository
 import com.zensolutions.marvelheroes.data.network.retrofit.MarvelTSProvider
 import com.zensolutions.marvelheroes.data.network.retrofit.RetrofitCallHandler
 import com.zensolutions.marvelheroes.di.main.MainScope
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

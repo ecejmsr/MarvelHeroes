@@ -18,4 +18,5 @@
     <string name="bottom_nav_squad">Squad</string>
     <string name="bottom_nav_store">Store</string>
     <string name="bottom_nav_heroes">Heroes</string>
+    <string name="heroOverviewUnlockButtonText">Unlock</string>
 </resources>

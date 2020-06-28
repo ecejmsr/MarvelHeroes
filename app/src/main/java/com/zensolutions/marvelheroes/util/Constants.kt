@@ -5,7 +5,7 @@ class Constants {
     companion object {
         @JvmField
         val POPULARHEROES = arrayListOf(
-            "Tony Stark",
+            "Iron Man",
             "Thor",
             "Hulk",
             "Captain America",
@@ -28,7 +28,7 @@ class Constants {
             "Gamora",
             "Groot",
             "Rocket",
-            "Peter Quill"
+            "Star-Lord"
         )
     }
 }

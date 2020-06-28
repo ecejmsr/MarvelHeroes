@@ -31,23 +31,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             layout="@layout/fragment_squad_info"/>
 
+        <TextView
+            android:id="@+id/home_popularHeroStoreList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Popular Heroes"
+            app:layout_constraintTop_toBottomOf="@id/include_squadInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/include_popularListRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:name="com.zensolutions.marvelheroes.ui.main.homeScreen.PopularHeroes.PopularHeroesListFragment"
-            app:layout_constraintTop_toBottomOf="@id/include_squadInfo"
-            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/home_popularHeroStoreList"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
-
-        <TextView
-            android:id="@+id/tempTextName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/include_popularListRecyclerView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

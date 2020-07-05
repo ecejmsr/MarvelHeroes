@@ -9,6 +9,21 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.zensolutions.marvelheroes.ui.main.homeScreen.HomeScreenFragment"
         android:label="@string/marvel_heroes_fragment_landing"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_heroOverviewFragment"
+            app:destination="@id/heroOverviewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/heroOverviewFragment"
+        android:name="com.zensolutions.marvelheroes.ui.main.heroOverview.HeroOverviewFragment"
+        android:label="fragment_hero_overview"
+        tools:layout="@layout/fragment_hero_overview" />
+    <fragment
+        android:id="@+id/tempFragment"
+        android:name="com.zensolutions.marvelheroes.ui.main.heroOverview.Temp.TempFragment"
+        android:label="fragment_temp"
+        tools:layout="@layout/fragment_temp" />
 
 </navigation>

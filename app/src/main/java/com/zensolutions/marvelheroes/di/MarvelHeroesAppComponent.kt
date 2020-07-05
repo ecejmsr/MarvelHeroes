@@ -1,6 +1,7 @@
 package com.zensolutions.marvelheroes.di
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatActivity
 import com.zensolutions.marvelheroes.di.main.MainComponent
 import dagger.BindsInstance
 import dagger.Component
@@ -27,7 +28,7 @@ interface MarvelHeroesAppComponent {
     }
 
     //TODO Jose remove this at the end see if it works?
-//    fun inject(baseActivity: AppCompatActivity)
+    fun inject(baseActivity: AppCompatActivity)
 
     fun mainComponent(): MainComponent.Factory
 }

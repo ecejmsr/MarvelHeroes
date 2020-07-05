@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 abstract class BaseFragment : Fragment() {
     /*
@@ -34,5 +35,9 @@ abstract class BaseFragment : Fragment() {
             }
         }
         return ViewModelProvider(this, factory).get(V::class.java)
+    }
+
+    fun navigate(action: Int){
+        findNavController().navigate(action)
     }
 }

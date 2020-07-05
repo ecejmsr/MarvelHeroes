@@ -19,4 +19,5 @@
     <string name="bottom_nav_store">Store</string>
     <string name="bottom_nav_heroes">Heroes</string>
     <string name="heroOverviewUnlockButtonText">Unlock</string>
+    <string name="home_popular_heroes">Popular Heroes</string>
 </resources>
